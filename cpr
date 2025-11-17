@@ -1,0 +1,16 @@
+#!/bin/bash
+
+src="$1"
+exe="${src%.*}"
+
+# Compile only if source is newer than executable or executable doesn't exist
+if [[ ! -f "$exe" || "$src" -nt "$exe" ]]; then
+    if ! g++ -std=c++23 "$src" -o "$exe"; then
+        echo "Compilation failed"
+        exit 1
+    fi
+fi
+
+# Run the executable
+./"$exe"
+
