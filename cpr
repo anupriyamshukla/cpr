@@ -11,6 +11,6 @@ if [[ ! -f "$exe" || "$src" -nt "$exe" ]]; then
     fi
 fi
 
-# Run the executable
-./"$exe"
+# Run the executable with 10s timeout
+gtimeout 10s ./"$exe"
 
